@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sf-ink: #1a2a26;
+  --sf-canvas: #eef1ec;
+  --sf-panel: #f7f8f5;
+  --sf-foam: #9ec9b8;
+  --sf-accent: #d0893a;
+  --sf-muted: #5f6f69;
+  --sf-border: #d5ddd7;
+  --background: var(--sf-canvas);
+  --foreground: var(--sf-ink);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-body), "Source Sans 3", system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Syne, Georgia, serif;
+}
+
+@layer components {
+  .sf-table {
+    @apply w-full text-left text-sm;
+  }
+  .sf-table th {
+    @apply border-b border-[var(--sf-border)] px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--sf-muted)];
+  }
+  .sf-table td {
+    @apply border-b border-[var(--sf-border)] px-3 py-2.5 align-middle;
+    border-bottom-color: color-mix(in srgb, var(--sf-border) 70%, transparent);
+  }
+  .sf-table tr:hover td {
+    @apply bg-black/[0.02];
+  }
+  .sf-btn {
+    @apply inline-flex items-center justify-center rounded-md px-3.5 py-2 text-sm font-semibold transition;
+  }
+  .sf-btn-primary {
+    @apply sf-btn bg-[var(--sf-ink)] text-white hover:bg-[#243933];
+  }
+  .sf-btn-accent {
+    @apply sf-btn bg-[var(--sf-accent)] text-[var(--sf-ink)] hover:brightness-105;
+  }
+  .sf-btn-ghost {
+    @apply sf-btn border border-[var(--sf-border)] bg-[var(--sf-panel)] text-[var(--sf-ink)] hover:bg-white;
+  }
+  .sf-card {
+    @apply rounded-lg border border-[var(--sf-border)] bg-[var(--sf-panel)];
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  body {
+    background: white;
+  }
+}
